@@ -23,13 +23,14 @@ public class Instrument_Spec_ManagerContextInitializer : DbContextTypesInfoIniti
 //This factory creates DbContext for design-time services. For example, it is required for database migration.
 public class Instrument_Spec_ManagerDesignTimeDbContextFactory : IDesignTimeDbContextFactory<Instrument_Spec_ManagerEFCoreDbContext> {
 	public Instrument_Spec_ManagerEFCoreDbContext CreateDbContext(string[] args) {
-		throw new InvalidOperationException("Make sure that the database connection string and connection provider are correct. After that, uncomment the code below and remove this exception.");
-		//var optionsBuilder = new DbContextOptionsBuilder<Instrument_Spec_ManagerEFCoreDbContext>();
-		//optionsBuilder.UseSqlServer("Integrated Security=SSPI;Data Source=(localdb)\\mssqllocaldb;Initial Catalog=Instrument_Spec_Manager");
-        //optionsBuilder.UseChangeTrackingProxies();
-        //optionsBuilder.UseObjectSpaceLinkProxies();
-		//return new Instrument_Spec_ManagerEFCoreDbContext(optionsBuilder.Options);
-	}
+		//throw new InvalidOperationException("Make sure that the database connection string and connection provider are correct. After that, uncomment the code below and remove this exception.");
+		var optionsBuilder = new DbContextOptionsBuilder<Instrument_Spec_ManagerEFCoreDbContext>();
+        //optionsBuilder.UseSqlServer("Integrated Security=SSPI;Data Source=(localdb)\\mssqllocaldb;Initial Catalog=Instrument_Spec_Manager");
+        optionsBuilder.UseNpgsql("Host=ambsim;Port=5432;Database=dev_sample;Username=postgres;Password=postgres");
+        optionsBuilder.UseChangeTrackingProxies();
+        optionsBuilder.UseObjectSpaceLinkProxies();
+        return new Instrument_Spec_ManagerEFCoreDbContext(optionsBuilder.Options);
+    }
 }
 [TypesInfoInitializer(typeof(Instrument_Spec_ManagerContextInitializer))]
 public class Instrument_Spec_ManagerEFCoreDbContext : DbContext {
