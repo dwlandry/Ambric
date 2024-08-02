@@ -17,12 +17,12 @@
 </head>
 <body>
     @{
-        string userAgent = Request.Headers["User-Agent"];
-        bool isIE = userAgent.Contains("MSIE") || userAgent.Contains("Trident");
+    string userAgent = Request.Headers["User-Agent"];
+    bool isIE = userAgent.Contains("MSIE") || userAgent.Contains("Trident");
     }
     @if(isIE) {
-        <link href="css/site.css" rel="stylesheet" />
-        <div class="d-flex flex-column justify-content-center align-items-center h-100">
+    <link href="css/site.css" rel="stylesheet" />
+    <div class="d-flex flex-column justify-content-center align-items-center h-100">
             <div class="d-flex">
                 <img class="mt-2 mr-4" src="_content/DevExpress.ExpressApp.Blazor/images/Sad.svg" width="60" height="60" />
                 <div>
@@ -31,27 +31,27 @@
                 </div>
             </div>
         </div>
-    }
-    else {
-        <component type="typeof(SplashScreen)" render-mode="Static" param-Caption='"Instrument Spec Manager"' param-ImagePath='"images/SplashScreen.svg"' />
+}
+else {
+    <component type="typeof(SplashScreen)" render-mode="Static" param-Caption='"Instrument Spec Manager"' param-ImagePath='"images/SplashScreen.svg"' />
 
-        <link href="_content/DevExpress.ExpressApp.Blazor/styles.css" asp-append-version="true" rel="stylesheet" />
-        <link href="css/site.css" rel="stylesheet" />
-        // Uncomment this link to enable CSS isolation. For more information, refer to the following topic: https://learn.microsoft.com/en-us/aspnet/core/blazor/components/css-isolation
-        //<link href="Instrument_Spec_Manager.Blazor.Server.styles.css" rel="stylesheet">
-        <script src="_content/DevExpress.ExpressApp.Blazor/scripts.js" asp-append-version="true"></script>
+    <link href="_content/DevExpress.ExpressApp.Blazor/styles.css" asp-append-version="true" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+    // Uncomment this link to enable CSS isolation. For more information, refer to the following topic: https://learn.microsoft.com/en-us/aspnet/core/blazor/components/css-isolation
+    //<link href="Instrument_Spec_Manager.Blazor.Server.styles.css" rel="stylesheet">
+    <script src="_content/DevExpress.ExpressApp.Blazor/scripts.js" asp-append-version="true"></script>
 
-        <app class="d-none">
+    <app class="d-none">
             <component type="typeof(App)" render-mode="Server" />
         </app>
-        
-        <component type="typeof(AlertsHandler)" render-mode="Server" />
+    
+    <component type="typeof(AlertsHandler)" render-mode="Server" />
 
-        <div id="blazor-error-ui">
+    <div id="blazor-error-ui">
             <component type="typeof(BlazorError)" render-mode="Static" />
         </div>
 
-        <script src="_framework/blazor.server.js"></script>
-    }
+    <script src="_framework/blazor.server.js"></script>
+}
 </body>
 </html>

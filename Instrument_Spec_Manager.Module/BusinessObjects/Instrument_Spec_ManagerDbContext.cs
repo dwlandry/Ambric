@@ -41,6 +41,7 @@ public class Instrument_Spec_ManagerEFCoreDbContext : DbContext {
 	public DbSet<PermissionPolicyRole> Roles { get; set; }
 	public DbSet<Instrument_Spec_Manager.Module.BusinessObjects.ApplicationUser> Users { get; set; }
     public DbSet<Instrument_Spec_Manager.Module.BusinessObjects.ApplicationUserLoginInfo> UserLoginInfos { get; set; }
+    public DbSet<Instrument_Spec_Manager.Module.BusinessObjects.Employee> Employees { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
