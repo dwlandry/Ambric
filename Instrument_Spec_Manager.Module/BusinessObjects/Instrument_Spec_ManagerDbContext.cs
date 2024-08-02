@@ -26,7 +26,7 @@ public class Instrument_Spec_ManagerDesignTimeDbContextFactory : IDesignTimeDbCo
 		//throw new InvalidOperationException("Make sure that the database connection string and connection provider are correct. After that, uncomment the code below and remove this exception.");
 		var optionsBuilder = new DbContextOptionsBuilder<Instrument_Spec_ManagerEFCoreDbContext>();
         //optionsBuilder.UseSqlServer("Integrated Security=SSPI;Data Source=(localdb)\\mssqllocaldb;Initial Catalog=Instrument_Spec_Manager");
-        optionsBuilder.UseNpgsql("Host=ambsim;Port=5432;Database=dev_sample;Username=postgres;Password=postgres");
+        optionsBuilder.UseNpgsql("Host=ambsim;Port=5432;Database=dev_sample;Username=postgres;Password=Ambric24");
         optionsBuilder.UseChangeTrackingProxies();
         optionsBuilder.UseObjectSpaceLinkProxies();
         return new Instrument_Spec_ManagerEFCoreDbContext(optionsBuilder.Options);

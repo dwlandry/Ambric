@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Instrument_Spec_Manager.Module.Migrations
 {
     [DbContext(typeof(Instrument_Spec_ManagerEFCoreDbContext))]
-    [Migration("20240802212112_MyInitialMigration")]
-    partial class MyInitialMigration
+    [Migration("20240802221434_UpdateEmployeeBirthdayColumnType")]
+    partial class UpdateEmployeeBirthdayColumnType
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -305,6 +305,9 @@ namespace Instrument_Spec_Manager.Module.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime?>("Birthday")
+                        .HasColumnType("date");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
 
@@ -313,6 +316,9 @@ namespace Instrument_Spec_Manager.Module.Migrations
 
                     b.Property<string>("MiddleName")
                         .HasColumnType("text");
+
+                    b.Property<int>("TitleOfCourtesy_Int")
+                        .HasColumnType("integer");
 
                     b.HasKey("ID");
 

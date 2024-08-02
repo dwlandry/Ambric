@@ -3,6 +3,7 @@ using System;
 using Instrument_Spec_Manager.Module.BusinessObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Instrument_Spec_Manager.Module.Migrations
 {
     [DbContext(typeof(Instrument_Spec_ManagerEFCoreDbContext))]
-    partial class Instrument_Spec_ManagerEFCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240802215620_AddEmployeeFields")]
+    partial class AddEmployeeFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -303,7 +306,7 @@ namespace Instrument_Spec_Manager.Module.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Birthday")
-                        .HasColumnType("date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
