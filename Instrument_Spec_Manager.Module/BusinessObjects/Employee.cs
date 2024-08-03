@@ -51,6 +51,7 @@ public class Employee : BaseObject
 
     public virtual IList<PhoneNumber> PhoneNumbers { get; set; } = new ObservableCollection<PhoneNumber>();
 
+    public virtual IList<DemoTask> DemoTasks { get; set; } = new ObservableCollection<DemoTask>();
 }
 
 public enum TitleOfCourtesy
