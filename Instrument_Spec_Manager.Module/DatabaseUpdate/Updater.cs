@@ -19,18 +19,43 @@ public class Updater : ModuleUpdater {
     }
     public override void UpdateDatabaseAfterUpdateSchema() {
         base.UpdateDatabaseAfterUpdateSchema();
-        
-        // Add initial data for the Employee class
-        CreateEmployeeIfNotExists("Mary", "Tellitson", new DateTime(1980, 11, 27), TitleOfCourtesy.Mrs);
-        CreateEmployeeIfNotExists("John", "Doe", new DateTime(1975, 5, 15), TitleOfCourtesy.Mr);
-        CreateEmployeeIfNotExists("Jane", "Smith", new DateTime(1990, 8, 22), TitleOfCourtesy.Ms);
+
+        IList<Department> departments = new List<Department>();
+        IList<Position> positions = new List<Position>();
 
         // Add initial data for the Position class
-        CreatePositionIfNotExists("Engineer");
-        CreatePositionIfNotExists("Manager");
-        CreatePositionIfNotExists("Designer");
-        CreatePositionIfNotExists("Safety");
-        CreatePositionIfNotExists("Programmer");
+        positions.Add(CreatePositionIfNotExists("Engineer"));
+        positions.Add(CreatePositionIfNotExists("Manager"));
+        positions.Add(CreatePositionIfNotExists("Designer"));
+        positions.Add(CreatePositionIfNotExists("Safety"));
+        positions.Add(CreatePositionIfNotExists("Programmer"));
+
+        // Add initial data for the Department class
+        departments.Add(CreateDepartmentIfNotExists("Engineering", "Concord"));
+        departments.Add(CreateDepartmentIfNotExists("Human Resources", "Concord"));
+        departments.Add(CreateDepartmentIfNotExists("Design", "Concord"));
+
+        ObjectSpace.CommitChanges(); //This line persists created object(s).
+
+        // Add initial data for the Employee class
+        CreateEmployeeIfNotExists("Mary", "Tellitson", new DateTime(1980, 11, 27), TitleOfCourtesy.Mrs, departments, positions);
+        CreateEmployeeIfNotExists("John", "Doe", new DateTime(1975, 5, 15), TitleOfCourtesy.Mr, departments, positions);
+        CreateEmployeeIfNotExists("Jane", "Smith", new DateTime(1990, 8, 22), TitleOfCourtesy.Ms, departments, positions);
+        CreateEmployeeIfNotExists("Robert", "Johnson", new DateTime(1985, 3, 12), TitleOfCourtesy.Mr, departments, positions);
+        CreateEmployeeIfNotExists("Emily", "Chen", new DateTime(1992, 7, 8), TitleOfCourtesy.Ms, departments, positions);
+        CreateEmployeeIfNotExists("Michael", "O'Connor", new DateTime(1978, 11, 30), TitleOfCourtesy.Mr, departments, positions);
+        CreateEmployeeIfNotExists("Sophia", "Garcia", new DateTime(1988, 4, 17), TitleOfCourtesy.Mrs, departments, positions);
+        CreateEmployeeIfNotExists("William", "Nguyen", new DateTime(1983, 9, 5), TitleOfCourtesy.Mr, departments, positions);
+        CreateEmployeeIfNotExists("Olivia", "Patel", new DateTime(1995, 1, 23), TitleOfCourtesy.Ms, departments, positions);
+        CreateEmployeeIfNotExists("James", "Kim", new DateTime(1976, 6, 14), TitleOfCourtesy.Mr, departments, positions);
+        CreateEmployeeIfNotExists("Emma", "Anderson", new DateTime(1991, 10, 9), TitleOfCourtesy.Ms, departments, positions);
+        CreateEmployeeIfNotExists("David", "Martinez", new DateTime(1982, 2, 28), TitleOfCourtesy.Mr, departments, positions);
+        CreateEmployeeIfNotExists("Ava", "Thompson", new DateTime(1987, 12, 3), TitleOfCourtesy.Mrs, departments, positions);
+        CreateEmployeeIfNotExists("Daniel", "Lee", new DateTime(1993, 8, 19), TitleOfCourtesy.Mr, departments, positions);
+        CreateEmployeeIfNotExists("Isabella", "Brown", new DateTime(1989, 5, 7), TitleOfCourtesy.Ms, departments, positions);
+        CreateEmployeeIfNotExists("Alexander", "Wilson", new DateTime(1981, 11, 11), TitleOfCourtesy.Mr, departments, positions);
+        CreateEmployeeIfNotExists("Mia", "Taylor", new DateTime(1994, 3, 25), TitleOfCourtesy.Ms, departments, positions);
+        CreateEmployeeIfNotExists("Ethan", "Davis", new DateTime(1986, 7, 2), TitleOfCourtesy.Mr, departments, positions);
 
         ObjectSpace.CommitChanges(); //This line persists created object(s).
 
@@ -92,7 +117,7 @@ public class Updater : ModuleUpdater {
         }
         return defaultRole;
     }
-    private void CreatePositionIfNotExists(string title)
+    private Position CreatePositionIfNotExists(string title)
     {
         Position position = ObjectSpace.FirstOrDefault<Position>(p => p.Title == title);
         if (position == null)
@@ -100,8 +125,14 @@ public class Updater : ModuleUpdater {
             position = ObjectSpace.CreateObject<Position>();
             position.Title = title;
         }
+        return position;
     }
-    private void CreateEmployeeIfNotExists(string firstName, string lastName, DateTime birthday, TitleOfCourtesy titleOfCourtesy)
+    private void CreateEmployeeIfNotExists(string firstName, 
+        string lastName, 
+        DateTime birthday, 
+        TitleOfCourtesy titleOfCourtesy,
+        IList<Department> departments,
+        IList<Position> positions)
     {
         Employee employee = ObjectSpace.FirstOrDefault<Employee>(e => e.FirstName == firstName && e.LastName == lastName);
         if (employee == null)
@@ -111,6 +142,23 @@ public class Updater : ModuleUpdater {
             employee.LastName = lastName;
             employee.Birthday = birthday;
             employee.TitleOfCourtesy = titleOfCourtesy;
+
+            // Assign random department and position
+            Random random = new Random();
+            employee.Department = departments[random.Next(departments.Count)];
+            employee.Position = positions[random.Next(positions.Count)];
+
         }
+    }
+    private Department CreateDepartmentIfNotExists(string title, string office)
+    {
+        Department department = ObjectSpace.FirstOrDefault<Department>(d => d.Title == title);
+        if (department == null)
+        {
+            department = ObjectSpace.CreateObject<Department>();
+            department.Title = title;
+            department.Office = office;
+        }
+        return department;
     }
 }
