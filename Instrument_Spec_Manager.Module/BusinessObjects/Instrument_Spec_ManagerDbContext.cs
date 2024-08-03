@@ -48,6 +48,7 @@ public class Instrument_Spec_ManagerEFCoreDbContext : DbContext {
     public DbSet<Instrument_Spec_Manager.Module.BusinessObjects.Position> Positions { get; set; }
     public DbSet<Instrument_Spec_Manager.Module.BusinessObjects.PhoneNumber> PhoneNumbers { get; set; }
     public DbSet<Instrument_Spec_Manager.Module.BusinessObjects.Address> Addresses { get; set; }
+    public DbSet<Instrument_Spec_Manager.Module.BusinessObjects.Payment> Payments { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
