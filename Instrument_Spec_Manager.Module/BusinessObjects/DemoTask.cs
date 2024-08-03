@@ -62,6 +62,15 @@ namespace Instrument_Spec_Manager.Module.BusinessObjects
         }
 
         public virtual IList<Employee> Employees { get; set; } = new ObservableCollection<Employee>();
+
+        public virtual Priority Priority { get; set; }
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+            Priority = Priority.Normal;
+        }
+
     }
     public enum TaskStatus
     {
@@ -75,5 +84,11 @@ namespace Instrument_Spec_Manager.Module.BusinessObjects
         Deferred,
         [ImageName("State_Task_Completed")]
         Completed
+    }
+    public enum Priority
+    {
+        Low = 0,
+        Normal = 1,
+        High = 2
     }
 }
