@@ -46,6 +46,8 @@ public class Employee : BaseObject
     [StringLength(4096)]
     public virtual string Notes { get; set; }
 
+    public virtual Department Department { get; set; }
+
 }
 
 public enum TitleOfCourtesy
