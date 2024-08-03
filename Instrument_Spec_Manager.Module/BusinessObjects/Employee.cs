@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp.DC;
+﻿using DevExpress.Data;
+using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Filtering;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.EF;
@@ -54,6 +55,8 @@ public class Employee : BaseObject
     public virtual IList<DemoTask> DemoTasks { get; set; } = new ObservableCollection<DemoTask>();
 
     public virtual Position Position { get; set; }
+
+    public virtual Address Address { get; set; }
 }
 
 public enum TitleOfCourtesy
