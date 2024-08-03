@@ -21,19 +21,30 @@ public class Updater : ModuleUpdater {
         base.UpdateDatabaseAfterUpdateSchema();
         //string name = "MyName";
         //EntityObject1 theObject = ObjectSpace.FirstOrDefault<EntityObject1>(u => u.Name == name);
-        //if(theObject == null) {
+        //if (theObject == null)
+        //{
         //    theObject = ObjectSpace.CreateObject<EntityObject1>();
         //    theObject.Name = name;
         //}
 
+        Employee employeeMary = ObjectSpace.FirstOrDefault<Employee>(e => e.FirstName == "Mary" && e.LastName == "Tellitson");
+        if (employeeMary == null)
+        {
+            employeeMary = ObjectSpace.CreateObject<Employee>();
+            employeeMary.FirstName = "Mary";
+            employeeMary.LastName = "Tellitson";
+            employeeMary.Birthday = new DateTime(1980, 11, 27);
+            employeeMary.TitleOfCourtesy = TitleOfCourtesy.Mrs;
+        }
 
+        ObjectSpace.CommitChanges(); //This line persists created object(s).
 
         // The code below creates users and roles for testing purposes only.
         // In production code, you can create users and assign roles to them automatically, as described in the following help topic:
         // https://docs.devexpress.com/eXpressAppFramework/119064/data-security-and-safety/security-system/authentication
 #if !RELEASE
         // If a role doesn't exist in the database, create this role
-		_ = CreateDefaultRole();
+        _ = CreateDefaultRole();
         var adminRole = CreateAdminRole();
 
         ObjectSpace.CommitChanges(); //This line persists created object(s).
