@@ -23,21 +23,29 @@ public class Updater : ModuleUpdater {
         IList<Department> departments = new List<Department>();
         IList<Position> positions = new List<Position>();
 
-        // Add initial data for the Position class
+        #region Initialize Positions
+
         positions.Add(CreatePositionIfNotExists("Engineer"));
         positions.Add(CreatePositionIfNotExists("Manager"));
         positions.Add(CreatePositionIfNotExists("Designer"));
         positions.Add(CreatePositionIfNotExists("Safety"));
         positions.Add(CreatePositionIfNotExists("Programmer"));
 
-        // Add initial data for the Department class
+        ObjectSpace.CommitChanges();
+
+        #endregion
+
+        #region Initialize Departments
+
         departments.Add(CreateDepartmentIfNotExists("Engineering", "Concord"));
         departments.Add(CreateDepartmentIfNotExists("Human Resources", "Concord"));
         departments.Add(CreateDepartmentIfNotExists("Design", "Concord"));
+        ObjectSpace.CommitChanges();
 
-        ObjectSpace.CommitChanges(); //This line persists created object(s).
+        #endregion
 
-        // Add initial data for the Employee class
+        #region Initialize Employees
+
         CreateEmployeeIfNotExists("Mary", "Tellitson", new DateTime(1980, 11, 27), TitleOfCourtesy.Mrs, departments, positions);
         CreateEmployeeIfNotExists("John", "Doe", new DateTime(1975, 5, 15), TitleOfCourtesy.Mr, departments, positions);
         CreateEmployeeIfNotExists("Jane", "Smith", new DateTime(1990, 8, 22), TitleOfCourtesy.Ms, departments, positions);
@@ -57,7 +65,10 @@ public class Updater : ModuleUpdater {
         CreateEmployeeIfNotExists("Mia", "Taylor", new DateTime(1994, 3, 25), TitleOfCourtesy.Ms, departments, positions);
         CreateEmployeeIfNotExists("Ethan", "Davis", new DateTime(1986, 7, 2), TitleOfCourtesy.Mr, departments, positions);
 
-        ObjectSpace.CommitChanges(); //This line persists created object(s).
+        ObjectSpace.CommitChanges();
+
+        #endregion
+
 
         // The code below creates users and roles for testing purposes only.
         // In production code, you can create users and assign roles to them automatically, as described in the following help topic:
@@ -127,12 +138,7 @@ public class Updater : ModuleUpdater {
         }
         return position;
     }
-    private void CreateEmployeeIfNotExists(string firstName, 
-        string lastName, 
-        DateTime birthday, 
-        TitleOfCourtesy titleOfCourtesy,
-        IList<Department> departments,
-        IList<Position> positions)
+    private void CreateEmployeeIfNotExists(string firstName, string lastName, DateTime birthday, TitleOfCourtesy titleOfCourtesy, IList<Department> departments, IList<Position> positions)
     {
         Employee employee = ObjectSpace.FirstOrDefault<Employee>(e => e.FirstName == firstName && e.LastName == lastName);
         if (employee == null)
