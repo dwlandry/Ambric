@@ -19,23 +19,18 @@ public class Updater : ModuleUpdater {
     }
     public override void UpdateDatabaseAfterUpdateSchema() {
         base.UpdateDatabaseAfterUpdateSchema();
-        //string name = "MyName";
-        //EntityObject1 theObject = ObjectSpace.FirstOrDefault<EntityObject1>(u => u.Name == name);
-        //if (theObject == null)
-        //{
-        //    theObject = ObjectSpace.CreateObject<EntityObject1>();
-        //    theObject.Name = name;
-        //}
+        
+        // Add initial data for the Employee class
+        CreateEmployeeIfNotExists("Mary", "Tellitson", new DateTime(1980, 11, 27), TitleOfCourtesy.Mrs);
+        CreateEmployeeIfNotExists("John", "Doe", new DateTime(1975, 5, 15), TitleOfCourtesy.Mr);
+        CreateEmployeeIfNotExists("Jane", "Smith", new DateTime(1990, 8, 22), TitleOfCourtesy.Ms);
 
-        Employee employeeMary = ObjectSpace.FirstOrDefault<Employee>(e => e.FirstName == "Mary" && e.LastName == "Tellitson");
-        if (employeeMary == null)
-        {
-            employeeMary = ObjectSpace.CreateObject<Employee>();
-            employeeMary.FirstName = "Mary";
-            employeeMary.LastName = "Tellitson";
-            employeeMary.Birthday = new DateTime(1980, 11, 27);
-            employeeMary.TitleOfCourtesy = TitleOfCourtesy.Mrs;
-        }
+        // Add initial data for the Position class
+        CreatePositionIfNotExists("Engineer");
+        CreatePositionIfNotExists("Manager");
+        CreatePositionIfNotExists("Designer");
+        CreatePositionIfNotExists("Safety");
+        CreatePositionIfNotExists("Programmer");
 
         ObjectSpace.CommitChanges(); //This line persists created object(s).
 
@@ -96,5 +91,26 @@ public class Updater : ModuleUpdater {
             defaultRole.AddTypePermissionsRecursively<ModelDifferenceAspect>(SecurityOperations.Create, SecurityPermissionState.Allow);
         }
         return defaultRole;
+    }
+    private void CreatePositionIfNotExists(string title)
+    {
+        Position position = ObjectSpace.FirstOrDefault<Position>(p => p.Title == title);
+        if (position == null)
+        {
+            position = ObjectSpace.CreateObject<Position>();
+            position.Title = title;
+        }
+    }
+    private void CreateEmployeeIfNotExists(string firstName, string lastName, DateTime birthday, TitleOfCourtesy titleOfCourtesy)
+    {
+        Employee employee = ObjectSpace.FirstOrDefault<Employee>(e => e.FirstName == firstName && e.LastName == lastName);
+        if (employee == null)
+        {
+            employee = ObjectSpace.CreateObject<Employee>();
+            employee.FirstName = firstName;
+            employee.LastName = lastName;
+            employee.Birthday = birthday;
+            employee.TitleOfCourtesy = titleOfCourtesy;
+        }
     }
 }
