@@ -1,8 +1,12 @@
-﻿using DevExpress.Persistent.Base;
+﻿using DevExpress.ExpressApp.DC;
+using DevExpress.ExpressApp.Filtering;
+using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.EF;
+using DevExpress.Persistent.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -16,12 +20,32 @@ public class Employee : BaseObject
     public virtual String FirstName { get; set; }
     public virtual String LastName { get; set; }
     public virtual String MiddleName { get; set; }
-    [Column(TypeName ="date")]
+    [Column(TypeName = "date")]
     public virtual DateTime? Birthday { get; set; }
     [Browsable(false)]
     public virtual int TitleOfCourtesy_Int { get; set; }
     [NotMapped]
     public virtual TitleOfCourtesy TitleOfCourtesy { get; set; }
+
+    [SearchMemberOptions(SearchMemberMode.Exclude)]
+    public string FullName => ObjectFormatter.Format(FullNameFormat, this, EmptyEntriesMode.RemoveDelimiterWhenEntryIsEmpty);
+
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public string DisplayName => FullName;
+
+    public static string FullNameFormat = "{FirstName} {MiddleName} {LastName}";
+
+
+    [FieldSize(255)]
+    public virtual string Email { get; set; }
+
+    //[RuleRegularExpression(DefaultContexts.Save, @"(https?://)?([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?", CustomMessageTemplate = "Invalid URL")]
+    [RuleRegularExpression(@"(((http|https)://)?([a-zA-Z0-9]+[.])?([a-zA-Z0-9]+[.][a-zA-Z0-9]+)+([?][a-zA-Z0-9]+[=][a-zA-Z0-9]+)?([/][a-zA-Z0-9]+)*)", CustomMessageTemplate = "Invalid URL")]
+    public virtual string WebPageAddress { get; set; }
+
+    [StringLength(4096)]
+    public virtual string Notes { get; set; }
+
 }
 
 public enum TitleOfCourtesy
