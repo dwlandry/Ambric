@@ -38,7 +38,13 @@ public class Startup {
                 .Add<Instrument_Spec_Manager.Module.Instrument_Spec_ManagerModule>()
             	.Add<Instrument_Spec_ManagerBlazorModule>()
                 .AddFileAttachments()
-                ;
+                .AddReports(options =>
+                {
+                    options.EnableInplaceReports = true;
+                    options.ReportDataType = typeof(DevExpress.Persistent.BaseImpl.EF.ReportDataV2);
+                    options.ReportStoreMode = DevExpress.ExpressApp.ReportsV2.ReportStoreModes.XML;
+                });
+            ;
 
             builder.ObjectSpaceProviders
                 .AddSecuredEFCore(options => options.PreFetchReferenceProperties())
