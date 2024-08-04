@@ -52,6 +52,7 @@ public class Instrument_Spec_ManagerEFCoreDbContext : DbContext {
     public DbSet<Instrument_Spec_Manager.Module.BusinessObjects.Note> Notes { get; set; }
     public DbSet<Resume> Resumes { get; set; }
     public DbSet<PortfolioFileData> FileAttachments { get; set; }
+    public DbSet<ReportDataV2> ReportData { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
