@@ -71,6 +71,16 @@ namespace Instrument_Spec_Manager.Module.BusinessObjects
             Priority = Priority.Normal;
         }
 
+        [Action(ToolTip = "Postpone the task to the next day", Caption = "Postpone")]
+        // Shift the task's due date forward by one day
+        public void Postpone()
+        {
+            if (DueDate == DateTime.MinValue)
+            {
+                DueDate = DateTime.Now;
+            }
+            DueDate = DueDate + TimeSpan.FromDays(1);
+        }
     }
     public enum TaskStatus
     {
