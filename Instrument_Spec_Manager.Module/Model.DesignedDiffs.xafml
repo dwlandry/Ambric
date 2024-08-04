@@ -2,6 +2,13 @@
 <Application Title="Instrument Spec Manager">
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
+    <Class Name="Instrument_Spec_Manager.Module.BusinessObjects.DemoTask">
+      <OwnMembers>
+        <Member Name="DueDate" DisplayFormat="D" />
+        <Member Name="PercentCompleted" DisplayFormat="{0:N0}%" />
+        <Member Name="StartDate" DisplayFormat="D" />
+      </OwnMembers>
+    </Class>
   </BOModel>
   <NavigationItems>
     <Items>
