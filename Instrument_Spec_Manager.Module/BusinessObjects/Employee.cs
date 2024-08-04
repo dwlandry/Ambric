@@ -17,6 +17,8 @@ using System.Threading.Tasks;
 namespace Instrument_Spec_Manager.Module.BusinessObjects;
 
 [DefaultClassOptions]
+[ObjectCaptionFormat("{0:FullName}")]
+[DefaultProperty(nameof(FullName))]
 public class Employee : BaseObject
 {
     public virtual String FirstName { get; set; }
