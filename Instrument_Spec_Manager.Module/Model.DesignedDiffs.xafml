@@ -67,7 +67,12 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="Employee_ListView">
+    <ListView Id="Employee_ListView" IsGroupPanelVisible="True">
+      <Columns>
+        <ColumnInfo Id="Address" Index="9" />
+        <ColumnInfo Id="Department" SortOrder="Ascending" GroupIndex="0" Index="10" />
+        <ColumnInfo Id="Position" SortOrder="Ascending" GroupIndex="1" Index="11" />
+      </Columns>
       <Filters CurrentFilterId="Designers">
         <Filter Id="All Employees" IsNewNode="True" />
         <Filter Id="Designer Department Employees" Criteria="[Department.Title] = 'Design'" IsNewNode="True" />
