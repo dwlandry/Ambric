@@ -20,6 +20,7 @@
     <PackageReference Include="DevExpress.Drawing.Skia" Version="24.1.4" />
     <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="24.1.4" />
     <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="24.1.4" />
+    <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Blazor" Version="24.1.4" />
     <PackageReference Include="DevExpress.ExpressApp.Validation.Blazor" Version="24.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="8.0.1" />

@@ -36,7 +36,10 @@ public class Startup {
                     options.AllowValidationDetailsAccess = false;
                 })
                 .Add<Instrument_Spec_Manager.Module.Instrument_Spec_ManagerModule>()
-            	.Add<Instrument_Spec_ManagerBlazorModule>();
+            	.Add<Instrument_Spec_ManagerBlazorModule>()
+                .AddFileAttachments()
+                ;
+
             builder.ObjectSpaceProviders
                 .AddSecuredEFCore(options => options.PreFetchReferenceProperties())
                     .WithDbContext<Instrument_Spec_Manager.Module.BusinessObjects.Instrument_Spec_ManagerEFCoreDbContext>((serviceProvider, options) => {
