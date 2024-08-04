@@ -12,6 +12,7 @@ namespace Instrument_Spec_Manager.Module.BusinessObjects
 {
     [DefaultClassOptions]
     [ImageName("BO_Resume")]
+    [FileAttachment(nameof(File))]
     public class Resume : BaseObject
     {
 
