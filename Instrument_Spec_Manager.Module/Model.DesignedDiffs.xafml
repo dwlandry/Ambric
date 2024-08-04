@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="Instrument Spec Manager">
+  <ActionDesign>
+    <Actions>
+      <Action Id="DemoTask.MarkCompleted" ValidationContexts="MarkCompleted" Caption="Mark Completed" />
+    </Actions>
+  </ActionDesign>
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
     <Class Name="Instrument_Spec_Manager.Module.BusinessObjects.DemoTask" ImageName="BO_Task">
@@ -34,6 +39,11 @@
   <SchemaModules>
     <SchemaModule Name="SystemModule" Version="24.1.4.0" IsNewNode="True" />
   </SchemaModules>
+  <Validation>
+    <Rules>
+      <RuleCriteria Id="TaskStarted" TargetType="Instrument_Spec_Manager.Module.BusinessObjects.DemoTask" Criteria="[Status] &lt;&gt; ##Enum#Instrument_Spec_Manager.Module.BusinessObjects.TaskStatus,NotStarted#" TargetContextIDs="MarkCompleted" CustomMessageTemplate="Cannot set the task as completed because it has not started." IsNewNode="True" />
+    </Rules>
+  </Validation>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
     <ListView Id="DemoTask_ListView" AllowEdit="True" NewItemRowPosition="Top" />
