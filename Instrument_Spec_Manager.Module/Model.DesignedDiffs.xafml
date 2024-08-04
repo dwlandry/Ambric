@@ -25,5 +25,47 @@
   </SchemaModules>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <DetailView Id="Employee_DetailView">
+      <Items>
+        <PropertyEditor Id="Department.Office" PropertyName="Department.Office" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="44.92481203007519">
+            <LayoutGroup Id="Employee" RelativeSize="100">
+              <LayoutGroup Id="Employee_col1" RelativeSize="50">
+                <LayoutItem Id="FirstName" RelativeSize="17.171717171717173" />
+                <LayoutItem Id="LastName" RelativeSize="13.131313131313131" />
+                <LayoutItem Id="MiddleName" RelativeSize="13.131313131313131" />
+                <LayoutItem Id="Birthday" RelativeSize="13.131313131313131" />
+                <LayoutItem Id="TitleOfCourtesy" RelativeSize="13.131313131313131" />
+                <LayoutItem Id="FullName" RelativeSize="13.131313131313131" />
+                <LayoutItem Id="DisplayName" RelativeSize="17.171717171717173" />
+              </LayoutGroup>
+              <LayoutGroup Id="Employee_col2" RelativeSize="50">
+                <LayoutItem Id="Email" RelativeSize="17.171717171717173" />
+                <LayoutItem Id="WebPageAddress" RelativeSize="13.131313131313131" />
+                <LayoutItem Id="Department" RelativeSize="13.131313131313131" />
+                <LayoutItem Id="Position" RelativeSize="13.131313131313131" />
+                <LayoutItem Id="Address" RelativeSize="13.131313131313131" />
+                <LayoutItem Id="Manager" RelativeSize="13.131313131313131" />
+                <LayoutItem Id="Department.Office" ViewItem="Department.Office" Index="6" RelativeSize="17.171717171717173" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="27.44360902255639">
+            <LayoutItem Id="Notes" RelativeSize="100" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="27.63157894736842">
+            <LayoutGroup Id="PhoneNumbers" RelativeSize="100">
+              <LayoutItem Id="PhoneNumbers" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="DemoTasks" RelativeSize="100">
+              <LayoutItem Id="DemoTasks" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
   </Views>
 </Application>
