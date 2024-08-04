@@ -1,11 +1,28 @@
-﻿<?xml version="1.0" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="Instrument Spec Manager">
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
   </BOModel>
+  <NavigationItems>
+    <Items>
+      <Item Id="Default">
+        <Items>
+          <Item Id="Employee_ListView" Caption="Employees" Index="0" />
+          <Item Id="Department_ListView" Caption="Departments" Index="1" />
+          <Item Id="Position_ListView" Caption="Positions" Index="2" />
+          <Item Id="DemoTask_ListView" Caption="Tasks" Index="3" />
+          <Item Id="Note" ViewId="Note_ListView" Caption="Notes" Index="4" IsNewNode="True" />
+          <Item Id="Payment_ListView" Caption="Payments" Index="5" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
   <Options>
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="24.1.4.0" IsNewNode="True" />
+  </SchemaModules>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
   </Views>
