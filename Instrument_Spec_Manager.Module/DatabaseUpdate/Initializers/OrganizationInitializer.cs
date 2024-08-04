@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskStatus = Instrument_Spec_Manager.Module.BusinessObjects.TaskStatus;
 
 namespace Instrument_Spec_Manager.Module.DatabaseUpdate.Initializers
 {
@@ -86,6 +87,7 @@ namespace Instrument_Spec_Manager.Module.DatabaseUpdate.Initializers
         {
             var taskData = new List<DemoTaskInitializationData>
             {
+                // Engineering Tasks
                 new DemoTaskInitializationData {
                     Subject = "Design pressure sensor prototype",
                     Description = "Create initial design for a high-accuracy pressure sensor for industrial applications",
@@ -105,40 +107,10 @@ namespace Instrument_Spec_Manager.Module.DatabaseUpdate.Initializers
                     AssignedEmployeeNames = new List<string> { "Emily Chen", "Daniel Lee" }
                 },
                 new DemoTaskInitializationData {
-                    Subject = "Conduct EMC testing on new product line",
-                    Description = "Perform electromagnetic compatibility testing on the new series of industrial controllers",
-                    Priority = Priority.Normal,
-                    AssignedEmployeeNames = new List<string> { "Alexander Wilson", "Emma Anderson" }
-                },
-                new DemoTaskInitializationData {
                     Subject = "Optimize power consumption in wireless sensors",
                     Description = "Research and implement power-saving techniques for battery-operated wireless sensor nodes",
                     Priority = Priority.High,
                     AssignedEmployeeNames = new List<string> { "William Nguyen", "Ethan Davis" }
-                },
-                new DemoTaskInitializationData {
-                    Subject = "Develop HMI interface for process monitoring",
-                    Description = "Design user-friendly HMI screens for real-time monitoring of manufacturing processes",
-                    Priority = Priority.Normal,
-                    AssignedEmployeeNames = new List<string> { "Olivia Patel", "Isabella Brown" }
-                },
-                new DemoTaskInitializationData {
-                    Subject = "Integrate HART protocol support in firmware",
-                    Description = "Add HART communication protocol support to existing instrument firmware",
-                    Priority = Priority.Low,
-                    AssignedEmployeeNames = new List<string> { "Ethan Davis", "David Martinez" }
-                },
-                new DemoTaskInitializationData {
-                    Subject = "Conduct field testing of new flow meters",
-                    Description = "Organize and execute field trials for recently developed ultrasonic flow meters",
-                    Priority = Priority.High,
-                    AssignedEmployeeNames = new List<string> { "Alexander Wilson", "James Kim" }
-                },
-                new DemoTaskInitializationData {
-                    Subject = "Update safety protocols for chemical plant installations",
-                    Description = "Review and revise safety procedures for installing our instruments in hazardous environments",
-                    Priority = Priority.High,
-                    AssignedEmployeeNames = new List<string> { "Michael O'Connor", "Emma Anderson" }
                 },
                 new DemoTaskInitializationData {
                     Subject = "Develop calibration software for pressure transmitters",
@@ -147,22 +119,48 @@ namespace Instrument_Spec_Manager.Module.DatabaseUpdate.Initializers
                     AssignedEmployeeNames = new List<string> { "David Martinez", "William Nguyen" }
                 },
                 new DemoTaskInitializationData {
-                    Subject = "Design new enclosure for outdoor sensors",
-                    Description = "Create a weatherproof and durable enclosure design for our outdoor sensor line",
-                    Priority = Priority.Normal,
-                    AssignedEmployeeNames = new List<string> { "Emily Chen", "Isabella Brown" }
-                },
-                new DemoTaskInitializationData {
                     Subject = "Implement IoT connectivity for remote monitoring",
                     Description = "Develop IoT capabilities for our instruments to enable remote monitoring and control",
                     Priority = Priority.High,
                     AssignedEmployeeNames = new List<string> { "Ethan Davis", "James Kim" }
                 },
                 new DemoTaskInitializationData {
-                    Subject = "Conduct FMEA for new valve positioner",
-                    Description = "Perform Failure Mode and Effects Analysis on the new smart valve positioner design",
+                    Subject = "Design new valve actuator",
+                    Description = "Develop a new electric valve actuator with improved efficiency and precision",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "John Doe", "Daniel Lee" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Optimize flow meter accuracy",
+                    Description = "Improve the accuracy of our ultrasonic flow meters in low-flow conditions",
                     Priority = Priority.Normal,
-                    AssignedEmployeeNames = new List<string> { "Michael O'Connor", "Robert Johnson" }
+                    AssignedEmployeeNames = new List<string> { "Robert Johnson", "James Kim" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Develop new pH sensor",
+                    Description = "Create a new pH sensor with extended lifespan for harsh chemical environments",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "Emily Chen", "John Doe" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Improve temperature sensor response time",
+                    Description = "Optimize the response time of our RTD temperature sensors for faster measurements",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Daniel Lee", "Robert Johnson" }
+                },
+
+                // Programming Tasks
+                new DemoTaskInitializationData {
+                    Subject = "Develop HMI interface for process monitoring",
+                    Description = "Design user-friendly HMI screens for real-time monitoring of manufacturing processes",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Olivia Patel", "Ethan Davis" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Integrate HART protocol support in firmware",
+                    Description = "Add HART communication protocol support to existing instrument firmware",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Ethan Davis", "David Martinez" }
                 },
                 new DemoTaskInitializationData {
                     Subject = "Develop machine learning algorithm for predictive maintenance",
@@ -171,17 +169,173 @@ namespace Instrument_Spec_Manager.Module.DatabaseUpdate.Initializers
                     AssignedEmployeeNames = new List<string> { "William Nguyen", "Daniel Lee" }
                 },
                 new DemoTaskInitializationData {
+                    Subject = "Develop cross-platform mobile app for field technicians",
+                    Description = "Create a mobile application for field technicians to access manuals and log maintenance activities",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "Ethan Davis", "William Nguyen" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Implement OPC UA server for data exchange",
+                    Description = "Develop an OPC UA server for standardized data exchange with third-party systems",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "David Martinez", "James Kim" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Create data visualization dashboard",
+                    Description = "Develop a web-based dashboard for visualizing real-time process data from multiple sources",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Olivia Patel", "William Nguyen" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Implement Modbus TCP/IP protocol",
+                    Description = "Add Modbus TCP/IP communication support to our programmable logic controllers",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Ethan Davis", "David Martinez" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Develop firmware update mechanism",
+                    Description = "Create a secure and reliable firmware update mechanism for field devices",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "William Nguyen", "James Kim" }
+                },
+
+                // Safety and Compliance Tasks
+                new DemoTaskInitializationData {
+                    Subject = "Conduct EMC testing on new product line",
+                    Description = "Perform electromagnetic compatibility testing on the new series of industrial controllers",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Alexander Wilson", "Emma Anderson" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Update safety protocols for chemical plant installations",
+                    Description = "Review and revise safety procedures for installing our instruments in hazardous environments",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "Michael O'Connor", "Emma Anderson" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Conduct FMEA for new valve positioner",
+                    Description = "Perform Failure Mode and Effects Analysis on the new smart valve positioner design",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Michael O'Connor", "Robert Johnson" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Perform HAZOP study for new refinery project",
+                    Description = "Conduct a Hazard and Operability study for the instrumentation system in a new refinery project",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "Emma Anderson", "Alexander Wilson" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Develop SIL verification procedures",
+                    Description = "Create procedures for verifying Safety Integrity Level (SIL) of our safety instrumented systems",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "Michael O'Connor", "John Doe" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Conduct cybersecurity assessment",
+                    Description = "Perform a comprehensive cybersecurity assessment of our networked instruments and systems",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "Alexander Wilson", "Ethan Davis" }
+                },
+
+                // Design Tasks
+                new DemoTaskInitializationData {
+                    Subject = "Design new enclosure for outdoor sensors",
+                    Description = "Create a weatherproof and durable enclosure design for our outdoor sensor line",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Emily Chen", "Isabella Brown" }
+                },
+                new DemoTaskInitializationData {
                     Subject = "Design new logo for product line",
                     Description = "Create a modern and appealing logo for our new smart sensor product line",
                     Priority = Priority.Low,
                     AssignedEmployeeNames = new List<string> { "Olivia Patel", "Isabella Brown" }
                 },
                 new DemoTaskInitializationData {
+                    Subject = "Redesign user interface for handheld calibrator",
+                    Description = "Improve the user interface of our handheld calibrator for better usability in the field",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Isabella Brown", "Olivia Patel" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Create 3D models for new product catalog",
+                    Description = "Develop detailed 3D models of our instruments for the upcoming product catalog",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Emily Chen", "Olivia Patel" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Design packaging for delicate sensors",
+                    Description = "Create protective packaging design for shipping our most sensitive instruments",
+                    Priority = Priority.Low,
+                    AssignedEmployeeNames = new List<string> { "Isabella Brown", "Emily Chen" }
+                },
+
+                // Field Testing and Quality Assurance Tasks
+                new DemoTaskInitializationData {
+                    Subject = "Conduct field testing of new flow meters",
+                    Description = "Organize and execute field trials for recently developed ultrasonic flow meters",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "Alexander Wilson", "James Kim" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Perform long-term reliability testing",
+                    Description = "Set up and monitor long-term reliability tests for our new line of pressure transmitters",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Emma Anderson", "Daniel Lee" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Develop automated test procedures",
+                    Description = "Create automated test procedures for quality assurance of mass-produced sensors",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "William Nguyen", "Robert Johnson" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Conduct environmental stress screening",
+                    Description = "Perform environmental stress screening on new batch of industrial computers",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Alexander Wilson", "Michael O'Connor" }
+                },
+
+                // Research and Development Tasks
+                new DemoTaskInitializationData {
+                    Subject = "Research new materials for corrosion resistance",
+                    Description = "Investigate novel materials to improve corrosion resistance in our chemical sensors",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "Emily Chen", "John Doe" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Explore quantum sensing technologies",
+                    Description = "Research potential applications of quantum sensing in industrial instrumentation",
+                    Priority = Priority.Low,
+                    AssignedEmployeeNames = new List<string> { "William Nguyen", "Daniel Lee" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Develop new calibration technique",
+                    Description = "Research and develop a novel calibration technique for multi-parameter sensors",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Robert Johnson", "James Kim" }
+                },
+
+                // Customer Support and Training Tasks
+                new DemoTaskInitializationData {
                     Subject = "Develop training program for new hires",
                     Description = "Create a comprehensive training program for onboarding new engineering staff",
                     Priority = Priority.Normal,
                     AssignedEmployeeNames = new List<string> { "Jane Smith", "Sophia Garcia" }
                 },
+                new DemoTaskInitializationData {
+                    Subject = "Create customer training materials",
+                    Description = "Develop training materials for customers on the use and maintenance of our new control system",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Mia Taylor", "Olivia Patel" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Establish technical support knowledge base",
+                    Description = "Compile and organize technical support information into a searchable knowledge base",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "Sophia Garcia", "Ethan Davis" }
+                },
+
+                // Business Development and Management Tasks
                 new DemoTaskInitializationData {
                     Subject = "Conduct market research for expansion into renewable energy sector",
                     Description = "Analyze market opportunities and competition in the renewable energy instrumentation market",
@@ -195,16 +349,28 @@ namespace Instrument_Spec_Manager.Module.DatabaseUpdate.Initializers
                     AssignedEmployeeNames = new List<string> { "Jane Smith", "David Martinez" }
                 },
                 new DemoTaskInitializationData {
-                    Subject = "Develop cross-platform mobile app for field technicians",
-                    Description = "Create a mobile application for field technicians to access manuals and log maintenance activities",
-                    Priority = Priority.High,
-                    AssignedEmployeeNames = new List<string> { "Ethan Davis", "William Nguyen" }
-                },
-                new DemoTaskInitializationData {
                     Subject = "Conduct annual performance reviews",
                     Description = "Schedule and conduct annual performance evaluations for all employees",
                     Priority = Priority.Normal,
                     AssignedEmployeeNames = new List<string> { "Jane Smith", "Mary Tellitson", "Ava Thompson" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Develop strategic plan for Asian market entry",
+                    Description = "Create a comprehensive strategy for entering the Asian instrumentation market",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "Mary Tellitson", "Mia Taylor" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Evaluate potential acquisition targets",
+                    Description = "Identify and evaluate potential companies for acquisition to expand our technology portfolio",
+                    Priority = Priority.High,
+                    AssignedEmployeeNames = new List<string> { "Mary Tellitson", "Jane Smith" }
+                },
+                new DemoTaskInitializationData {
+                    Subject = "Implement new project management software",
+                    Description = "Select and implement a new project management system to improve cross-department collaboration",
+                    Priority = Priority.Normal,
+                    AssignedEmployeeNames = new List<string> { "Sophia Garcia", "David Martinez" }
                 }
             };
 
@@ -224,6 +390,30 @@ namespace Instrument_Spec_Manager.Module.DatabaseUpdate.Initializers
                 task.Subject = data.Subject;
                 task.Description = data.Description;
                 task.Priority = data.Priority;
+                task.DueDate = DateTime.Now.AddDays(new Random().Next(1, 30));
+                task.StartDate = DateTime.Now.AddDays(-new Random().Next(1, 10));
+                // create a random task status
+                var statusValues = Enum.GetValues(typeof(TaskStatus));
+                task.Status = (TaskStatus)statusValues.GetValue(new Random().Next(statusValues.Length));
+                // if the status is completed, set the date completed to a random date in the past but after the start date
+                if (task.Status == TaskStatus.Completed)
+                {
+                    task.DateCompleted = task.StartDate.Value.AddDays(new Random().Next(1, 10));
+                }
+                // apply random percent complete that makes sense with the status
+                if (task.Status == TaskStatus.Completed)
+                {
+                    task.PercentCompleted = 100;
+                }
+                else if (task.Status == TaskStatus.InProgress)
+                {
+                    task.PercentCompleted = new Random().Next(10, 90);
+                }
+                else
+                {
+                    task.PercentCompleted = 0;
+                }
+
 
                 foreach (var employeeName in data.AssignedEmployeeNames)
                 {
