@@ -61,6 +61,8 @@ public class Employee : BaseObject
     [DataSourceProperty("Department.Employees", DataSourcePropertyIsNullMode.SelectAll)]
     [DataSourceCriteria("Position.Title = 'Manager'")]
     public virtual Employee Manager { get; set; }
+
+    public virtual IList<Resume> Resumes { get; set; } = new ObservableCollection<Resume>();
 }
 
 public enum TitleOfCourtesy
