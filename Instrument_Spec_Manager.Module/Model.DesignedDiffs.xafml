@@ -67,5 +67,14 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Employee_ListView">
+      <Filters CurrentFilterId="Designers">
+        <Filter Id="All Employees" IsNewNode="True" />
+        <Filter Id="Designer Department Employees" Criteria="[Department.Title] = 'Design'" IsNewNode="True" />
+        <Filter Id="Designers" Criteria="[Position.Title] = 'Designer'" IsNewNode="True" />
+        <Filter Id="Engineers" Criteria="[Position.Title] = 'Engineer'" IsNewNode="True" />
+        <Filter Id="Managers" Criteria="[Position.Title] = 'Manager'" IsNewNode="True" />
+      </Filters>
+    </ListView>
   </Views>
 </Application>
