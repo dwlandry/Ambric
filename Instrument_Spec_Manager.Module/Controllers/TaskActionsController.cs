@@ -11,6 +11,7 @@ using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
 using Instrument_Spec_Manager.Module.BusinessObjects;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,6 +47,34 @@ namespace Instrument_Spec_Manager.Module.Controllers
             setStatusItem = new ChoiceActionItem(CaptionHelper.GetMemberCaption(typeof(DemoTask), "Status"), null);
             SetTaskAction.Items.Add(setStatusItem);
             FillItemWithEnumValues(setStatusItem, typeof(BusinessObjects.TaskStatus));
+
+            SetTaskAction.Execute += SetTaskAction_Execute;
+        }
+
+        private void SetTaskAction_Execute(object sender, SingleChoiceActionExecuteEventArgs e)
+        {
+            IObjectSpace objectSpace = View is ListView ?
+                Application.CreateObjectSpace(typeof(DemoTask)) : View.ObjectSpace;
+            ArrayList objectsToProcess = new ArrayList(e.SelectedObjects);
+            if (e.SelectedChoiceActionItem.ParentItem == setPriorityItem)
+            {
+                foreach (Object obj in objectsToProcess)
+                {
+                    DemoTask objInNewObjectSpace = (DemoTask)objectSpace.GetObject(obj);
+                    objInNewObjectSpace.Priority = (Priority)e.SelectedChoiceActionItem.Data;
+                }
+            }
+            else
+                if (e.SelectedChoiceActionItem.ParentItem == setStatusItem)
+            {
+                foreach (Object obj in objectsToProcess)
+                {
+                    DemoTask objInNewObjectSpace = (DemoTask)objectSpace.GetObject(obj);
+                    objInNewObjectSpace.Status = (BusinessObjects.TaskStatus)e.SelectedChoiceActionItem.Data;
+                }
+            }
+            objectSpace.CommitChanges();
+            View.ObjectSpace.Refresh();
         }
 
         private void FillItemWithEnumValues(ChoiceActionItem parentItem, Type enumType)
