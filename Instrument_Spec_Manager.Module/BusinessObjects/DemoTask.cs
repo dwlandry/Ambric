@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp.DC;
+﻿using DevExpress.ExpressApp.ConditionalAppearance;
+using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.EF;
@@ -14,6 +15,8 @@ namespace Instrument_Spec_Manager.Module.BusinessObjects
 {
     [DefaultClassOptions]
     [ModelDefault("Caption", "Task")]
+    [Appearance("FontColorRed", AppearanceItemType = "ViewItem", TargetItems = "*",
+        Context = "ListView", Criteria = "Status!='Completed'", FontColor = "Red")]
     public class DemoTask : BaseObject
     {
         [Column(TypeName = "date")]
@@ -63,6 +66,8 @@ namespace Instrument_Spec_Manager.Module.BusinessObjects
 
         public virtual IList<Employee> Employees { get; set; } = new ObservableCollection<Employee>();
 
+        [Appearance("PriorityBackColorPink", AppearanceItemType = "ViewItem",
+            Context = "Any", Criteria = "Priority=2", BackColor = "255, 240, 240")]
         public virtual Priority Priority { get; set; }
 
         public override void OnCreated()
