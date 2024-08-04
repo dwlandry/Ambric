@@ -25,6 +25,8 @@
   </SchemaModules>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <ListView Id="DemoTask_ListView" AllowEdit="True" NewItemRowPosition="Top" />
+    <ListView Id="Department_ListView" MasterDetailMode="ListViewAndDetailView" />
     <DetailView Id="Employee_DetailView">
       <Items>
         <PropertyEditor Id="Department.Office" PropertyName="Department.Office" IsNewNode="True" />
