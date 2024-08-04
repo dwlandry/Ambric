@@ -43,7 +43,7 @@ namespace Instrument_Spec_Manager.Module.Controllers {
             var objectType = ((ListView)View).ObjectTypeInfo.Type;
             IObjectSpace objectSpace = Application.CreateObjectSpace(objectType);
             string paramValue = e.ParameterCurrentValue as string;
-            object obj = objectSpace.FirstOrDefault<DemoTask>(task => task.Subject.Contains(paramValue));
+            object obj = objectSpace.FirstOrDefault<DemoTask>(task => task.Subject.IndexOf(paramValue, StringComparison.OrdinalIgnoreCase) >= 0);
             if (obj != null)
             {
                 DetailView detailView = Application.CreateDetailView(objectSpace, obj);
