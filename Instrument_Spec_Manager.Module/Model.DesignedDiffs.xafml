@@ -2,13 +2,17 @@
 <Application Title="Instrument Spec Manager">
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.EF.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
-    <Class Name="Instrument_Spec_Manager.Module.BusinessObjects.DemoTask">
+    <Class Name="Instrument_Spec_Manager.Module.BusinessObjects.DemoTask" ImageName="BO_Task">
       <OwnMembers>
         <Member Name="DueDate" DisplayFormat="D" />
         <Member Name="PercentCompleted" DisplayFormat="{0:N0}%" />
         <Member Name="StartDate" DisplayFormat="D" />
       </OwnMembers>
     </Class>
+    <Class Name="Instrument_Spec_Manager.Module.BusinessObjects.Department" ImageName="BO_Department" />
+    <Class Name="Instrument_Spec_Manager.Module.BusinessObjects.Employee" ImageName="BO_Employee" />
+    <Class Name="Instrument_Spec_Manager.Module.BusinessObjects.Payment" ImageName="BO_Invoice" />
+    <Class Name="Instrument_Spec_Manager.Module.BusinessObjects.Position" ImageName="BO_Position" />
   </BOModel>
   <NavigationItems>
     <Items>
